@@ -1,9 +1,10 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "nodemon index.ts",
+    "beautiful": "prettier --single-quote --trailing-comma all --write 'src/**/*.{ts,json,scss}'",
+    "start": "nodemon src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,12 +20,24 @@
   "author": "huusangcv",
   "license": "ISC",
   "description": "",
+  "lint-staged": {
+    "src/**/*.{ts,json,scss}": "prettier --single-quote --trailing-comma all --write"
+  }, 
+  "hooks": {
+  "pre-commit": "lint-staged"
+  },
   "dependencies": {
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
     "@types/nodemon": "^1.19.6",
-    "nodemon": "^3.1.9"
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2"
   }
 }
